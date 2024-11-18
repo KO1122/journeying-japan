@@ -1,14 +1,30 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
-  return (
-    <nav className="flex h-20 items-center bg-red-500">
-      <h1>Journeying Japan</h1>
+function Navbar({ posts, setPosts }) {
+  const { current: defaultPosts } = useRef(posts);
 
-      <input type="text" placeholder="Search" />
+  function handleSearchChange(e) {
+    if (!e.target.value) return setPosts(defaultPosts);
+    const newPosts = defaultPosts.filter((post) =>
+      post.title.toLowerCase().includes(e.target.value.toLowerCase()),
+    );
+    setPosts(newPosts);
+  }
+
+  return (
+    <nav className="flex h-20 items-center justify-around bg-red-500">
+      <h1 className="font-oleo text-3xl text-gray-200">Journeying Japan</h1>
+
+      <input
+        type="text"
+        placeholder="Search"
+        className="w-1/4 rounded-xl px-2 py-1"
+        onChange={handleSearchChange}
+      />
 
       <div className="flex">
-        <Link className="flex items-center">
+        <Link className="flex items-center" to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -26,7 +42,7 @@ function Navbar() {
           Home
         </Link>
 
-        <Link className="flex items-center">
+        <Link className="flex items-center" to="/create">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

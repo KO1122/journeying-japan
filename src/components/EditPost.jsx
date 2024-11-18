@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { supabase } from "../client";
+import { useLoaderData, useParams } from "react-router-dom";
 
-function CreatePost() {
+function EditPost() {
+  const posts = useLoaderData();
+  const { id } = useParams();
+  const curPost = posts.find((post) => post.id === Number(id));
   const [post, setPost] = useState({
-    title: "",
-    content: "",
-    imgUrl: "",
+    title: curPost.title,
+    content: curPost.content,
+    imgUrl: curPost.image_url,
   });
 
   function handleChange(e) {
@@ -15,17 +19,17 @@ function CreatePost() {
     });
   }
 
-  async function createPost(e) {
+  async function editPost(e) {
     e.preventDefault();
 
     await supabase
       .from("Posts")
-      .insert({
+      .update({
         title: post.title,
         content: post.content,
         image_url: post.imgUrl,
       })
-      .select();
+      .eq("id", id);
 
     window.location = "/";
   }
@@ -36,6 +40,7 @@ function CreatePost() {
         className="input-base"
         placeholder="Title"
         name="title"
+        value={post.title}
         onChange={handleChange}
       />
       <textarea
@@ -43,6 +48,7 @@ function CreatePost() {
         placeholder="Content (Optional)"
         rows="7"
         name="content"
+        value={post.content}
         onChange={handleChange}
       />
       <input
@@ -50,13 +56,14 @@ function CreatePost() {
         type="url"
         placeholder="Image URL (Optional)"
         name="imgUrl"
+        value={post.imgUrl}
         onChange={handleChange}
       />
-      <button className="btn" onClick={createPost}>
-        Create Post
+      <button className="btn" onClick={editPost}>
+        Edit Post
       </button>
     </form>
   );
 }
 
-export default CreatePost;
+export default EditPost;
