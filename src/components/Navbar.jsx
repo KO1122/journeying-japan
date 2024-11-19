@@ -16,7 +16,7 @@ function Navbar({ posts, setPosts, defaultPosts }) {
       <h1 className="font-oleo text-center text-4xl">Journeying Japan</h1>
 
       <input
-        type="text"
+        type="search"
         placeholder="Search"
         className="mt-2 w-56 rounded-xl px-2 py-1 text-black lg:w-1/4"
         onChange={handleSearchChange}

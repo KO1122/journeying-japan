@@ -27,6 +27,7 @@ function CreatePost() {
         title: post.title,
         content: post.content,
         image_url: post.imgUrl,
+        video_url: post.videoUrl,
       })
       .select();
 
@@ -55,6 +56,13 @@ function CreatePost() {
           type="url"
           placeholder="Image URL (Optional)"
           name="imgUrl"
+          onChange={handleChange}
+        />
+        <input
+          className="input-base"
+          type="url"
+          placeholder="Video URL (Optional)"
+          name="videoUrl"
           onChange={handleChange}
         />
         <button

@@ -21,7 +21,7 @@ function Home() {
 
   return (
     <main>
-      <div className="flex-col text-center">
+      <div className="flex-col text-center lg:text-start">
         <span className="block lg:inline">Sort by:</span>
         <button
           className="btn mt-1 bg-red-500 hover:bg-red-600 lg:ms-2"

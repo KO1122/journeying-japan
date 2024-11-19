@@ -11,7 +11,7 @@ function PostPage() {
   const posts = useLoaderData();
   const { id } = useParams();
   const curPost = posts.find((post) => post.id === Number(id));
-  const { created_at, title, content, image_url } = curPost;
+  const { created_at, title, content, image_url, video_url } = curPost;
   const [upvotes, setUpvotes] = useState(curPost.upvotes);
   const [comments, setComments] = useState(curPost.comments || []);
   const navigate = useNavigate();
@@ -56,6 +56,13 @@ function PostPage() {
       <h1 className="my-2 text-2xl font-bold">{title}</h1>
       <div className="whitespace-pre-wrap">{content.trim()}</div>
       <img className="mt-1.5 w-80" src={image_url} />
+      {video_url && (
+        <iframe
+          className="mt-1.5 aspect-video w-full sm:w-80"
+          src={video_url}
+          allow="fullscreen"
+        ></iframe>
+      )}
 
       {/* Features */}
       <div className="mt-3 flex items-center">

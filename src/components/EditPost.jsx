@@ -11,6 +11,7 @@ function EditPost() {
     title: curPost.title,
     content: curPost.content,
     imgUrl: curPost.image_url,
+    videoUrl: curPost.video_url,
   });
   const navigate = useNavigate();
 
@@ -30,6 +31,7 @@ function EditPost() {
         title: post.title,
         content: post.content,
         image_url: post.imgUrl,
+        video_url: post.videoUrl,
       })
       .eq("id", id);
 
@@ -61,6 +63,14 @@ function EditPost() {
           placeholder="Image URL (Optional)"
           name="imgUrl"
           value={post.imgUrl}
+          onChange={handleChange}
+        />
+        <input
+          className="input-base"
+          type="url"
+          placeholder="Video URL (Optional)"
+          name="videoUrl"
+          value={post.videoUrl}
           onChange={handleChange}
         />
         <button className="btn bg-red-500 hover:bg-red-600" onClick={editPost}>
