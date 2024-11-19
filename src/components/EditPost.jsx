@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../client";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function EditPost() {
   const posts = useLoaderData();
@@ -11,6 +12,7 @@ function EditPost() {
     content: curPost.content,
     imgUrl: curPost.image_url,
   });
+  const navigate = useNavigate();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -31,7 +33,8 @@ function EditPost() {
       })
       .eq("id", id);
 
-    window.location = "/";
+    toast.success("Post edited successfully");
+    return navigate("/");
   }
 
   return (

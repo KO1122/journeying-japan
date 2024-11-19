@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { getTimeDifference } from "../utility.js";
 import { BiUpvote } from "react-icons/bi";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { supabase } from "../client.js";
+import { toast } from "react-toastify";
 
 function PostPage() {
   const posts = useLoaderData();
@@ -13,6 +14,7 @@ function PostPage() {
   const { created_at, title, content, image_url } = curPost;
   const [upvotes, setUpvotes] = useState(curPost.upvotes);
   const [comments, setComments] = useState(curPost.comments || []);
+  const navigate = useNavigate();
 
   async function increaseUpvotes(e) {
     e.preventDefault();
@@ -28,7 +30,8 @@ function PostPage() {
   async function deletePost(e) {
     e.preventDefault();
     await supabase.from("Posts").delete().eq("id", id);
-    window.location = "/";
+    toast.success("Post deleted successfully");
+    return navigate("/");
   }
 
   async function addComment(e) {

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../client";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function CreatePost() {
   const [post, setPost] = useState({
@@ -7,6 +9,7 @@ function CreatePost() {
     content: "",
     imgUrl: "",
   });
+  const navigate = useNavigate();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -27,7 +30,8 @@ function CreatePost() {
       })
       .select();
 
-    window.location = "/";
+    toast.success("Post created successfully");
+    return navigate("/");
   }
 
   return (

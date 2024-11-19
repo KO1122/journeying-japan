@@ -5,6 +5,7 @@ import { IoIosAdd } from "react-icons/io";
 
 function Navbar({ posts, setPosts }) {
   const { current: defaultPosts } = useRef(posts);
+  console.log(posts, setPosts);
 
   function handleSearchChange(e) {
     if (!e.target.value) return setPosts(defaultPosts);
