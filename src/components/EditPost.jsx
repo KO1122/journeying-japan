@@ -39,7 +39,7 @@ function EditPost() {
 
   return (
     <main className="flex w-full justify-center">
-      <form className="w-1/2 flex-col rounded bg-white p-5">
+      <form className="w-10/12 flex-col rounded bg-white p-5">
         <input
           className="input-base"
           placeholder="Title"
