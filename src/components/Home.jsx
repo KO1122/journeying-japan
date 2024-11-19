@@ -22,14 +22,19 @@ function Home() {
   return (
     <main>
       <div>
-        <span>Sort by</span>
+        <span>Sort by:</span>
         <button
-          className="cursor-pointer rounded-lg border px-2 py-1 transition duration-300 hover:border-indigo-400"
+          className="btn ms-2 bg-red-500 hover:bg-red-600"
           onClick={sortByNewest}
         >
           Newest
         </button>
-        <button onClick={sortByUpvote}>Most Upvotes</button>
+        <button
+          className="btn ms-2 bg-red-500 hover:bg-red-600"
+          onClick={sortByUpvote}
+        >
+          Most Upvotes
+        </button>
       </div>
 
       {posts?.length > 0 &&

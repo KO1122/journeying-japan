@@ -7,9 +7,9 @@ function Main() {
   const [posts, setPosts] = useState(useLoaderData());
 
   return (
-    <div className="h-screen bg-zinc-200">
+    <div className="h-screen bg-gray-50">
       <Navbar posts={posts} setPosts={setPosts} />
-      <div className="mt-8 px-64">
+      <div className="mt-8 px-[15%]">
         <Outlet context={[posts, setPosts]} />
       </div>
     </div>

@@ -35,34 +35,36 @@ function EditPost() {
   }
 
   return (
-    <form className="w-1/2 flex-col rounded bg-white px-4 py-6">
-      <input
-        className="input-base"
-        placeholder="Title"
-        name="title"
-        value={post.title}
-        onChange={handleChange}
-      />
-      <textarea
-        className="input-base block resize-none"
-        placeholder="Content (Optional)"
-        rows="7"
-        name="content"
-        value={post.content}
-        onChange={handleChange}
-      />
-      <input
-        className="input-base"
-        type="url"
-        placeholder="Image URL (Optional)"
-        name="imgUrl"
-        value={post.imgUrl}
-        onChange={handleChange}
-      />
-      <button className="btn" onClick={editPost}>
-        Edit Post
-      </button>
-    </form>
+    <main className="flex w-full justify-center">
+      <form className="w-1/2 flex-col rounded bg-white p-5">
+        <input
+          className="input-base"
+          placeholder="Title"
+          name="title"
+          value={post.title}
+          onChange={handleChange}
+        />
+        <textarea
+          className="input-base block resize-none"
+          placeholder="Content (Optional)"
+          rows="7"
+          name="content"
+          value={post.content}
+          onChange={handleChange}
+        />
+        <input
+          className="input-base"
+          type="url"
+          placeholder="Image URL (Optional)"
+          name="imgUrl"
+          value={post.imgUrl}
+          onChange={handleChange}
+        />
+        <button className="btn bg-red-500 hover:bg-red-600" onClick={editPost}>
+          Edit Post
+        </button>
+      </form>
+    </main>
   );
 }
 
