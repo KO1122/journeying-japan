@@ -12,17 +12,17 @@ function Navbar({ posts, setPosts, defaultPosts }) {
   }
 
   return (
-    <nav className="flex h-20 items-center justify-around bg-red-500 text-white">
-      <h1 className="font-oleo text-3xl">Journeying Japan</h1>
+    <nav className="bg-red-500 px-4 py-6 text-center text-white lg:flex lg:h-20 lg:items-center lg:justify-around">
+      <h1 className="font-oleo text-center text-4xl">Journeying Japan</h1>
 
       <input
         type="text"
         placeholder="Search"
-        className="w-1/4 rounded-xl px-2 py-1 text-black"
+        className="mt-2 w-56 rounded-xl px-2 py-1 text-black lg:w-1/4"
         onChange={handleSearchChange}
       />
 
-      <div className="flex gap-3">
+      <div className="mt-2 flex justify-center gap-3">
         <Link className="flex items-center" to="/">
           <IoMdHome />
           Home

@@ -31,7 +31,7 @@ function Main() {
         setPosts={setPosts}
         defaultPosts={postsRef.current}
       />
-      <div className="mt-8 px-[15%]">
+      <div className="mt-4 px-[15%] lg:mt-8">
         <Outlet context={[posts, setPosts]} />
       </div>
     </div>

@@ -36,7 +36,7 @@ function CreatePost() {
 
   return (
     <main className="flex w-full justify-center">
-      <form className="w-10/12 flex-col rounded bg-white p-5">
+      <form className="w-full flex-col rounded bg-white p-5 lg:w-10/12">
         <input
           className="input-base"
           placeholder="Title"

@@ -21,16 +21,16 @@ function Home() {
 
   return (
     <main>
-      <div>
-        <span>Sort by:</span>
+      <div className="flex-col text-center">
+        <span className="block lg:inline">Sort by:</span>
         <button
-          className="btn ms-2 bg-red-500 hover:bg-red-600"
+          className="btn mt-1 bg-red-500 hover:bg-red-600 lg:ms-2"
           onClick={sortByNewest}
         >
           Newest
         </button>
         <button
-          className="btn ms-2 bg-red-500 hover:bg-red-600"
+          className="btn ml-2 bg-red-500 hover:bg-red-600 lg:ms-2"
           onClick={sortByUpvote}
         >
           Most Upvotes
