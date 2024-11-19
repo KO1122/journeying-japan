@@ -7,7 +7,9 @@ function PostCard({ id, createdAt, title, upvotes }) {
       <Link to={`/post/${id}`}>
         <div className="text-sm">Posted {getTimeDifference(createdAt)}</div>
         <h2 className="mt-2 text-2xl font-bold">{title}</h2>
-        <div className="mt-2">{upvotes} upvotes</div>
+        <div className="mt-2">
+          {upvotes} {upvotes > 1 ? "upvotes" : "upvote"}
+        </div>
       </Link>
     </div>
   );

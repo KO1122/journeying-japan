@@ -54,7 +54,7 @@ function PostPage() {
       {/* Post */}
       <div className="text-sm">Posted {getTimeDifference(created_at)}</div>
       <h1 className="my-2 text-2xl font-bold">{title}</h1>
-      <div>{content}</div>
+      <div className="whitespace-pre-wrap">{content.trim()}</div>
       <img className="mt-1.5 w-80" src={image_url} />
 
       {/* Features */}
@@ -63,7 +63,9 @@ function PostPage() {
           <button onClick={increaseUpvotes}>
             <BiUpvote className="hover:fill-red-500" />
           </button>
-          <span>{upvotes} upvotes</span>
+          <span>
+            {upvotes} {upvotes > 1 ? "upvotes" : "upvote"}
+          </span>
         </div>
         <Link to="edit">
           <MdEdit size={27} className="icon-btn ml-1" />
