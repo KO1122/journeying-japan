@@ -55,10 +55,10 @@ function PostPage() {
       <div className="text-sm">Posted {getTimeDifference(created_at)}</div>
       <h1 className="my-2 text-2xl font-bold">{title}</h1>
       <div className="whitespace-pre-wrap">{content.trim()}</div>
-      <img className="mt-1.5 w-80" src={image_url} />
+      <img className="mt-1.5 w-80 lg:inline" src={image_url} />
       {video_url && (
         <iframe
-          className="mt-1.5 aspect-video w-full sm:w-80"
+          className="mt-1.5 aspect-video w-full align-top sm:w-80 lg:ml-4 lg:inline lg:max-w-80"
           src={video_url}
           allow="fullscreen"
         ></iframe>

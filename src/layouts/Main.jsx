@@ -8,17 +8,24 @@ import { supabase } from "../client";
 
 function Main() {
   const [posts, setPosts] = useState(useLoaderData());
+  const [loading, setLoading] = useState(true);
   const postsRef = useRef(useLoaderData());
   const location = useLocation();
 
   useEffect(() => {
     async function getPosts() {
-      const { data } = await supabase
-        .from("Posts")
-        .select()
-        .order("id", { ascending: true });
-      postsRef.current = data;
-      setPosts(data);
+      try {
+        const { data } = await supabase
+          .from("Posts")
+          .select()
+          .order("id", { ascending: true });
+        postsRef.current = data;
+        setPosts(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     }
     getPosts();
   }, [location.key]);
@@ -32,7 +39,7 @@ function Main() {
         defaultPosts={postsRef.current}
       />
       <div className="mt-4 px-[15%] lg:mt-8">
-        <Outlet context={[posts, setPosts]} />
+        <Outlet context={[posts, setPosts, loading]} />
       </div>
     </div>
   );

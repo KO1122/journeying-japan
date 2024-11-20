@@ -1,9 +1,10 @@
 import { useOutletContext } from "react-router-dom";
 import PostCard from "./PostCard";
 import { getTimeInMilliSecs } from "../utility";
+import Spinner from "./Spinner";
 
 function Home() {
-  const [posts, setPosts] = useOutletContext();
+  const [posts, setPosts, loading] = useOutletContext();
 
   function sortByNewest() {
     const newPosts = posts.slice().sort((a, b) => {
@@ -37,18 +38,24 @@ function Home() {
         </button>
       </div>
 
-      {posts?.length > 0 &&
-        posts.map((post) => {
-          return (
-            <PostCard
-              key={post.id}
-              id={post.id}
-              createdAt={post.created_at}
-              title={post.title}
-              upvotes={post.upvotes}
-            />
-          );
-        })}
+      {loading ? (
+        <Spinner loading={loading} />
+      ) : (
+        <>
+          {posts?.length > 0 &&
+            posts.map((post) => {
+              return (
+                <PostCard
+                  key={post.id}
+                  id={post.id}
+                  createdAt={post.created_at}
+                  title={post.title}
+                  upvotes={post.upvotes}
+                />
+              );
+            })}
+        </>
+      )}
     </main>
   );
 }
